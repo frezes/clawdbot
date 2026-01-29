@@ -1,12 +1,13 @@
 # Clawdbot 
 
-Clawdbot for KubeSphere Extension.
+Moltbot(Clawdbot) for KubeSphere Extension
 
 ## Quick Start
 
 ### 1. Publish Extension
 
 > [ksbuilder](https://github.com/kubesphere/ksbuilder) is a CLI tool to create, publish, and manage KubeSphere extensions.
+>
 > You need to download [ksbuilder](https://github.com/kubesphere/ksbuilder/releases) and save it to an executable directory.
 
 ```

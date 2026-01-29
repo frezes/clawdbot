@@ -1,0 +1,62 @@
+apiVersion: kubesphere.io/v1alpha1
+name: clawdbot
+version: 2026.1.24
+displayName:
+  zh: Moltbot(Clawdbot)
+  en: Moltbot(Clawdbot)
+description:
+  zh: |
+      Moltbot 是一款运行在你自有机设备上的个人 AI 助手。它可以在你常用的通讯频道中提供回复，包括 WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、Microsoft Teams 和 WebChat，并支持 BlueBubbles、Matrix、Zalo 及 Zalo Personal 等扩展渠道。
+      如果你正在寻找一个私密的、单用户专用、且兼具本地感、极速响应和全天候在线的个人助手，这就是你的不二之选。
+  en: |
+      Moltbot is a personal AI assistant you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. 
+      If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
+category: ai-machine-learning
+keywords:
+  - ai-machine-learning
+home: https://kubesphere.io
+sources:
+  - https://github.com/kubesphere
+kubeVersion: ">=1.19.0-0"
+ksVersion: ">=4.0.0-0"
+maintainers:
+  - name: "Clawdbot Team"
+    email: ""
+    url: "https://docs.clawd.bot"
+provider:
+  zh:
+    name: "Clawdbot Team"
+    email: ""
+    url: "https://docs.clawd.bot"
+  en:
+    name: "Clawdbot Team"
+    email: ""
+    url: "https://docs.clawd.bot"
+icon: ./static/favicon.ico
+dependencies:
+  - name: clawdbot
+    tags:
+    - extension
+# installationMode describes how to install subcharts, it can be HostOnly or Multicluster.
+# In Multicluster mode, the subchart with tag `extension` will only be deployed to the host cluster,
+# and the subchart with tag `agent` will be deployed to all selected clusters.
+installationMode: HostOnly
+# Custom namespace example: If not specified, it will be installed in the namespace named extension-{name}.
+#namespace: ""
+# external dependencies example
+#externalDependencies:
+#  - name: a
+#    type: extension
+#    version: ">= 2.6.0"
+#    required: true
+#  - name: b
+#    type: extension
+#    version: ">= 2.2.0"
+#    required: true
+# Add init containers to the extension installation job to execute custom tasks (eg: CRDs upgrade).
+# Support unified or separate configuration of init container image for each stage.
+#annotations:
+#  executor-hook-image.kubesphere.io: ...
+#  executor-hook-image.kubesphere.io/install: ...
+#  executor-hook-image.kubesphere.io/upgrade: ...
+#  executor-hook-image.kubesphere.io/uninstall: ...

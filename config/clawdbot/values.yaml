@@ -2,7 +2,7 @@ clawdbot:
   # Basic configuration for local testing or development
   image:
     registry: ghcr.io
-    repository: moltbot/moltbot
+    repository: openclaw/openclaw
     pullPolicy: IfNotPresent
     tag: "main"
 

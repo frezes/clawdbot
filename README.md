@@ -1,6 +1,6 @@
 # Clawdbot 
 
-Moltbot(Clawdbot) for KubeSphere Extension
+OpenClaw(Clawdbot) for KubeSphere Extension
 
 ## Quick Start
 

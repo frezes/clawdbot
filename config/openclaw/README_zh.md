@@ -22,7 +22,7 @@
 
 ### 工具与自动化
 
-- 内置 **Browser、Canvas、Nodes、Sessions、Cron、Skills** 等一等工具能力
+- 内置 **Browser、Canvas、Nodes、Sessions、Cron、Skills** 等工具能力
 - 支持浏览器自动化、设备节点控制、定时任务、Webhook 和技能扩展
 
 ### 本地数据与模型灵活性
@@ -97,12 +97,12 @@ openclaw:
           openclaw.json: |
             {
               // Gateway configuration
-                "gateway": {
+              "gateway": {
                 "port": 18789,
                 "mode": "local",
-                controlUi: {
-                  enabled: true,
-                  allowedOrigins: ["https://control.example.com"]
+                "controlUi": {
+                  "enabled": true,
+                  "allowedOrigins": ["https://control.example.com"]
                   // required for non-loopback Control UI access
                   // dangerouslyAllowHostHeaderOriginFallback: false, // dangerous Host-header origin fallback mode
                   // allowInsecureAuth: false,
@@ -127,7 +127,7 @@ openclaw:
                 "defaults": {
                   "workspace": "/home/node/.openclaw/workspace",
                   "model": {
-                    // Uses ANTHROPIC_API_KEY from environment
+                    // Uses CORESHUB_API_KEY from environment
                     "primary": "coreshub/MiniMax-M2.5"
                   },
                   "userTimezone": "UTC",

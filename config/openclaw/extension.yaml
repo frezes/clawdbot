@@ -1,0 +1,49 @@
+apiVersion: kubesphere.io/v1alpha1
+name: openclaw
+version: 2026.3.24
+displayName:
+  zh: OpenClaw
+  en: OpenClaw
+description:
+  zh: |
+      OpenClaw是一款您在自有设备上运行的个人AI助手。它会在您已使用的渠道上回复您（WhatsApp、Telegram、Slack、Discord、Google Chat、Signal、iMessage、BlueBubbles、IRC、Microsoft Teams、Matrix、飞书、LINE、Mattermost、Nextcloud Talk、Nostr、Synology Chat、Tlon、Twitch、Zalo、Zalo Personal、微信、WebChat）。它可以在macOS/iOS/Android上说话和聆听，并能渲染您控制的实时画布。网关只是控制面板——产品本身就是助手。
+      如果您想要一款感觉本地、快速、始终在线的个人单用户助手，这就是您要的。
+  en: |
+      OpenClaw is a personal AI assistant you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, BlueBubbles, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, WebChat). It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
+      If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
+category: ai-machine-learning
+keywords:
+  - ai-machine-learning
+home: https://openclaw.ai
+docs: https://docs.openclaw.ai
+sources:
+  - https://github.com/openclaw/openclaw
+kubeVersion: ">=1.26.0-0"
+ksVersion: ">=4.2.0-0"
+maintainers:
+  - name: "Clawdbot Team"
+    email: ""
+    url: "https://openclaw.ai/"
+provider:
+  zh:
+    name: "Clawdbot Team"
+    email: ""
+    url: "https://openclaw.ai/"
+  en:
+    name: "Clawdbot Team"
+    email: ""
+    url: "https://openclaw.ai/"
+icon: ./static/favicon.svg
+dependencies:
+  - name: openclaw
+    tags:
+    - extension
+# installationMode describes how to install subcharts, it can be HostOnly or Multicluster.
+# In Multicluster mode, the subchart with tag `extension` will only be deployed to the host cluster,
+# and the subchart with tag `agent` will be deployed to all selected clusters.
+installationMode: HostOnly
+images:
+- ghcr.io/openclaw/openclaw:2026.3.24
+- docker.io/chromedp/headless-shell:147.0.7727.24
+screenshots:
+  - ./static/screenshots/openclaw-logo-text.png

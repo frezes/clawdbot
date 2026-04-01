@@ -1,6 +1,6 @@
-# Clawdbot 
+# OpenClaw 
 
-Moltbot(Clawdbot) for KubeSphere Extension
+OpenClaw for KubeSphere Extension
 
 ## Quick Start
 
@@ -11,7 +11,7 @@ Moltbot(Clawdbot) for KubeSphere Extension
 > You need to download [ksbuilder](https://github.com/kubesphere/ksbuilder/releases) and save it to an executable directory.
 
 ```
-ksbuilder publish  config/clawdbot
+ksbuilder publish  config/openclaw
 ```
 
 ### 2. Deploy

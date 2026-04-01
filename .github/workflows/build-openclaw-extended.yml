@@ -9,7 +9,7 @@ on:
         default: 2026.3.24
 
 env:
-  IMAGE_NAME: kubesphere/openclaw-extended
+  IMAGE_NAME: kubespheredev/openclaw-extended
 
 jobs:
   docker:

@@ -6,7 +6,13 @@ rules:
       - 'extensions.kubesphere.io'
     resources:
       - '*'
-
+  - verbs:
+      - '*'
+    apiGroups:
+      - 'rbac.authorization.k8s.io'
+    resources:
+      - 'clusterroles'
+      - 'clusterrolebindings'
 ---
 kind: Role
 rules:

@@ -38,6 +38,8 @@ openclaw:
         # @schema type:string;enum:[Recreate, RollingUpdate];default:Recreate
         # -- Deployment strategy
         strategy: Recreate
+        serviceAccount:
+          identifier: main
 
         initContainers:
           # Init container handles config setup with merge/overwrite modes.
@@ -45,7 +47,7 @@ openclaw:
           init-config:
             image:
               # @schema type:string;default:ghcr.io/openclaw/openclaw
-              repository: ghcr.io/openclaw/openclaw
+              repository: docker.io/kubespheredev/openclaw-extended
               # @schema type:string
               tag: "{{ .Values.openclawVersion }}"
             # -- Init-config startup script
@@ -69,7 +71,7 @@ openclaw:
           init-skills:
             image:
               # @schema type:string;default:ghcr.io/openclaw/openclaw
-              repository: ghcr.io/openclaw/openclaw
+              repository: docker.io/kubespheredev/openclaw-extended
               # @schema type:string
               tag: "{{ .Values.openclawVersion }}"
             # -- Init-skills startup script
@@ -97,7 +99,7 @@ openclaw:
             image:
               # @schema type:string;default:ghcr.io/openclaw/openclaw
               # -- Container image repository
-              repository: ghcr.io/openclaw/openclaw
+              repository: docker.io/kubespheredev/openclaw-extended
               # @schema type:string
               # -- Container image tag
               tag: "{{ .Values.openclawVersion }}"
@@ -779,3 +781,252 @@ openclaw:
             #   ports:
             #     - protocol: TCP
             #       port: 8200
+
+    serviceAccount:
+      main:
+        enabled: true
+
+    rbac:
+      roles:
+        main:
+          # -- Enables or disables the Role. Can be templated.
+          enabled: true
+          # -- Set to Role,ClusterRole
+          type: ClusterRole
+          rules:
+            - apiGroups:
+              - ""
+              resources:
+              - secrets
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - storage.k8s.io
+              resources:
+              - storageclasses
+              verbs:
+              - list
+              - get
+              - watch
+            - apiGroups:
+              - metrics.k8s.io
+              resources:
+              - pods
+              - nodes
+              verbs:
+              - get
+              - list
+            - apiGroups:
+              - ""
+              resources:
+              - configmaps
+              - daemonsets
+              - deployments
+              - events
+              - namespaces
+              - persistentvolumes
+              - persistentvolumeclaims
+              - pods
+              - pods/status
+              - pods/log
+              - replicasets
+              - replicationcontrollers
+              - services
+              - serviceaccounts
+              - endpoints
+              - resourcequotas
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - ""
+              resources:
+              - nodes
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - apiregistration.k8s.io
+              resources:
+              - apiservices
+              verbs:
+              - get
+              - list
+            - apiGroups:
+              - rbac.authorization.k8s.io
+              resources:
+              - clusterroles
+              - clusterrolebindings
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - autoscaling
+              resources:
+              - horizontalpodautoscalers
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - apps
+              resources:
+              - daemonsets
+              - deployments
+              - deployments/scale
+              - replicasets
+              - replicasets/scale
+              - statefulsets
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - extensions
+              resources:
+              - daemonsets
+              - deployments
+              - deployments/scale
+              - ingresses
+              - replicasets
+              - replicasets/scale
+              - replicationcontrollers/scale
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - batch
+              resources:
+              - cronjobs
+              - jobs
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - events.k8s.io
+              resources:
+              - events
+              verbs:
+              - get
+              - list
+            - apiGroups:
+              - apiextensions.k8s.io
+              resources:
+              - customresourcedefinitions
+              verbs:
+              - list
+              - get
+            - apiGroups:
+              - admissionregistration.k8s.io
+              resources:
+              - mutatingwebhookconfigurations
+              - validatingwebhookconfigurations
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - networking.k8s.io
+              resources:
+              - ingresses
+              - networkpolicies
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - autoscaling
+              resources:
+              - horizontalpodautoscalers
+              verbs:
+              - get
+              - list
+            - apiGroups:
+              - policy
+              resources:
+              - poddisruptionbudgets
+              - podsecuritypolicies
+              verbs:
+              - get
+              - list
+            - apiGroups:
+              - rbac.authorization.k8s.io
+              resources:
+              - clusterroles
+              - clusterrolebindings
+              - roles
+              - rolebindings
+              verbs:
+              - get
+              - list
+            - apiGroups:
+              - monitoring.coreos.com
+              resources:
+              - alertmanagers
+              - alertmanagers/finalizers
+              - alertmanagers/status
+              - alertmanagerconfigs
+              - prometheuses
+              - prometheuses/finalizers
+              - prometheuses/status
+              - prometheusagents
+              - prometheusagents/finalizers
+              - prometheusagents/status
+              - thanosrulers
+              - thanosrulers/finalizers
+              - thanosrulers/status
+              - scrapeconfigs
+              - servicemonitors
+              - podmonitors
+              - probes
+              - prometheusrules
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - keda.sh
+              resources:
+              - scaledobjects
+              - scaledjobs
+              - triggerauthentications
+              - clustertriggerauthentications
+              verbs:
+              - get
+              - list
+              - watch
+            - apiGroups:
+              - gateway.networking.k8s.io
+              resources:
+              - gatewayclasses
+              - gateways
+              - httproutes
+              - tcproutes
+              - tlsroutes
+              - udproutes
+              - grpcroutes
+              - referencegrants
+              verbs:
+              - get
+              - list
+              - watch
+
+      bindings:
+        main:
+          # -- Enables or disables the Role. Can be templated.
+          enabled: true
+          # -- Set to RoleBinding,ClusterRoleBinding
+          type: ClusterRoleBinding
+          roleRef:
+            identifier: main
+          # -- If using an identifier it will be automatically filled, otherwise every key will need to be explicitly declared
+          subjects:
+            - identifier: main
+

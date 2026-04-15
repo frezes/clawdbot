@@ -1,6 +1,6 @@
 apiVersion: kubesphere.io/v1alpha1
 name: openclaw
-version: 2026.4.10
+version: 2026.4.11-beta.0
 displayName:
   zh: OpenClaw
   en: OpenClaw
@@ -43,7 +43,7 @@ dependencies:
 # and the subchart with tag `agent` will be deployed to all selected clusters.
 installationMode: HostOnly
 images:
-- ghcr.io/openclaw/openclaw:2026.4.10
+- docker.io/kubespheredev/openclaw-extended:2026.4.11
 - docker.io/chromedp/headless-shell:147.0.7727.56
 screenshots:
   - ./static/screenshots/openclaw-logo-text.png
